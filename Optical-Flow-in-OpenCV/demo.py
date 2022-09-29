@@ -16,7 +16,7 @@ def main():
         help="Optical flow algorithm to use",
     )
     parser.add_argument(
-        "--video_path", default="videos/people.mp4", help="Path to the video",
+        "--video_path", default="/home/cgranstrom/xtract/projects/HUHF/models/google-research/smurf/data/my_data/infrared_kerosene/frames_fewer_for_smurf", 
     )
 
     args = parser.parse_args()
