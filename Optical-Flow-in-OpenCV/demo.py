@@ -10,12 +10,13 @@ def main():
     parser = ArgumentParser()
     parser.add_argument(
         "--algorithm",
+        default="lucaskanade_dense",
         choices=["farneback", "lucaskanade", "lucaskanade_dense", "rlof"],
-        required=True,
+        required=False,
         help="Optical flow algorithm to use",
     )
     parser.add_argument(
-        "--video_path", default="videos/cat.mp4", help="Path to the video",
+        "--video_path", default="videos/people.mp4", help="Path to the video",
     )
 
     args = parser.parse_args()
@@ -36,3 +37,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
