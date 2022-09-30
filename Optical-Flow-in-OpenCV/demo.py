@@ -5,6 +5,13 @@ import cv2
 from algorithms.dense_optical_flow import dense_optical_flow
 from algorithms.lucas_kanade import lucas_kanade_method
 
+import os
+from src import data
+
+data_path = os.path.dirname(data.__file__)
+image_path = os.path.join(data_path, "frames/sintel_frames/market_2/final")
+
+test=1
 
 def main():
     parser = ArgumentParser()
@@ -16,7 +23,7 @@ def main():
         help="Optical flow algorithm to use",
     )
     parser.add_argument(
-        "--video_path", default="/home/cgranstrom/xtract/projects/HUHF/models/google-research/smurf/data/my_data/infrared_kerosene/frames_fewer_for_smurf", 
+        "--video_path", default=image_path, 
     )
 
     args = parser.parse_args()

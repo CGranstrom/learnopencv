@@ -2,7 +2,8 @@ import cv2
 import numpy as np
 import glob
 import os
-from src.utils.file_io import yield_image_generator
+from src.utils.file_io import save_flow_image, yield_image_generator
+from src.utils.data_viz import display_flow
 
 def dense_optical_flow(method, images_dir, params=[], to_gray=False):
     image_paths = glob.glob(os.path.join(images_dir, '*.png')) + \
@@ -14,7 +15,7 @@ def dense_optical_flow(method, images_dir, params=[], to_gray=False):
     hsv = np.zeros_like(first_frame)
     hsv[..., 1] = 255
 
-    for first_frame, second_frame in yield_image_generator(image_paths):
+    for idx, (first_frame, second_frame) in enumerate(yield_image_generator(image_paths)):
 
         frame_copy = second_frame
 
@@ -34,9 +35,9 @@ def dense_optical_flow(method, images_dir, params=[], to_gray=False):
         hsv[..., 2] = cv2.normalize(mag, None, 0, 255, cv2.NORM_MINMAX)
         
         # Convert HSV image into BGR for demo
-        bgr = cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
-        cv2.imshow("frame", frame_copy)
-        cv2.imshow("optical flow", bgr)
+        rgb = cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
+        display_flow(flow, rgb)
+        save_flow_image(flow, idx, "sintel/opencv")
         k = cv2.waitKey(25) & 0xFF
         if k == 27:
             break
