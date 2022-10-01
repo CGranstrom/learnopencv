@@ -6,7 +6,7 @@ from algorithms.dense_optical_flow import dense_optical_flow
 from algorithms.lucas_kanade import lucas_kanade_method
 
 import os
-from src import data
+import data
 
 data_path = os.path.dirname(data.__file__)
 image_path = os.path.join(data_path, "frames/sintel_frames/market_2/final")

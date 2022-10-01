@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 import glob
 import os
-from src.utils.file_io import save_flow_image, yield_image_generator
-from src.utils.data_viz import display_flow
+from utils.file_io import save_flow_image, yield_image_generator
+from utils.data_viz import display_flow
 
 def dense_optical_flow(method, images_dir, params=[], to_gray=False):
     image_paths = glob.glob(os.path.join(images_dir, '*.png')) + \
