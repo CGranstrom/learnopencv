@@ -11,8 +11,6 @@ import data
 data_path = os.path.dirname(data.__file__)
 image_path = os.path.join(data_path, "frames/sintel_frames/market_2/final")
 
-test=1
-
 def main():
     parser = ArgumentParser()
     parser.add_argument(
